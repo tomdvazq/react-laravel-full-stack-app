@@ -14,17 +14,21 @@ const router = createBrowserRouter([
         children: [
             {
                 path: '/',
+                name: 'Users',
                 element: <Navigate to={'/users'} />
             },
             {
                 path: '/dashboard',
+                name: 'Dashboard',
                 element: <Dashboard/>
             },
             {
                 path: '/users',
+                name: 'Users',
                 element: <Users/>
             },
-        ]
+        ],
+        logged: true
     },
     {
         path: '/',
@@ -32,13 +36,16 @@ const router = createBrowserRouter([
         children: [
             {
                 path: '/login',
+                name: 'Login',
                 element: <Login/>
             },
             {
                 path: '/signup',
+                name: 'Sign Up',
                 element: <SignUp/>
             },
-        ]
+        ],
+        logged: false
     },
     {
         path: '*',
