@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom"
 
-const GuestLayout = () => {
+const DefaultLayout = () => {
     return (
         <div>
             <Outlet />
@@ -8,4 +8,4 @@ const GuestLayout = () => {
     )
 }
 
-export default GuestLayout
+export default DefaultLayout
