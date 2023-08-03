@@ -11,8 +11,10 @@ const StateContext = createContext({
 // Responsable de envolver a los componentes hijos con el contexto proporcionado (StateContext). Este componente acepta children como prop, que se refiere a los componentes que estarán dentro de él.
 
 export const ContextProvider = ({children}) => {
-    const [user, setUser] = useState({});
-    const [token, _setToken] = useState(123);
+    const [user, setUser] = useState({
+        name: 'Jhon'
+    });
+    const [token, _setToken] = useState(null);
 
     const setToken = (token) => {
         _setToken(token)
