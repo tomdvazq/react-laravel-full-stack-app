@@ -24,7 +24,7 @@ const SignUp = () => {
             password_confirmation: passwordConfirmationRef.current.value
         }
 
-        axiosClient.post("/signup",payload)
+        axiosClient.post("/signup", payload)
             .then((data) => {
                 setUser(data.user)
                 setToken(data.token);
