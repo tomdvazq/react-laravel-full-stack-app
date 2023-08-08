@@ -31,7 +31,6 @@ class SignUpRequest extends FormRequest
                 Password::min(8)
                 ->letters()
                 ->symbols()
-                ->numbers()
             ]
         ];
     }

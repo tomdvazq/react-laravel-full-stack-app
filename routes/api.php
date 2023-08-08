@@ -19,6 +19,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('/login', [AuthController::class, '/login']);
-Route::post('/signup', [AuthController::class, '/signup']);
-Route::post('/logout', [AuthController::class, '/logout']);
+Route::post('/signup', [AuthController::class, 'signup']); // Corregido: 'signup' en lugar de '/signup'
+Route::post('/login', [AuthController::class, 'login']);   // Corregido: 'login' en lugar de '/login'
+Route::post('/logout', [AuthController::class, 'logout']); // Corregido: 'logout' en lugar de '/logout'

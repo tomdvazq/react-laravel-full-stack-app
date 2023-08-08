@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 const StateContext = createContext({
     currentUser: null,
@@ -11,11 +11,9 @@ const StateContext = createContext({
 // Responsable de envolver a los componentes hijos con el contexto proporcionado (StateContext). Este componente acepta children como prop, que se refiere a los componentes que estarán dentro de él.
 
 export const ContextProvider = ({ children }) => {
-    const [user, setUser] = useState({
-        name: "Jhon",
-    });
+    const [user, setUser] = useState({});
     const [token, _setToken] = useState(localStorage.getItem("ACCESS_TOKEN"));
-
+    
     const setToken = (token) => {
         _setToken(token);
         if (token) {

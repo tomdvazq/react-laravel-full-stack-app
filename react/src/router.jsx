@@ -27,8 +27,7 @@ const router = createBrowserRouter([
                 name: 'Users',
                 element: <Users/>
             },
-        ],
-        logged: true
+        ]
     },
     {
         path: '/',
@@ -44,8 +43,7 @@ const router = createBrowserRouter([
                 name: 'Sign Up',
                 element: <SignUp/>
             },
-        ],
-        logged: false
+        ]
     },
     {
         path: '*',
