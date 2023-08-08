@@ -1,28 +1,29 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import axiosClient from "../axios-client";
+import axiosClient from "../axiosClient";
 import { useStateContext } from "../contexts/ContextProvider";
 
 const SignUp = () => {
     
     const nameRef = useRef();
-    const surnameRef = useRef();
     const emailRef = useRef();
     const passwordRef = useRef();
     const passwordConfirmationRef = useRef();
 
     const {setUser, setToken} = useStateContext();
+    const [errors, setErrors] = useState(null);
 
     const onSubmit = (e) => {
         e.preventDefault();
 
         const payload = {
             name: nameRef.current.value,
-            surname: surnameRef.current.value,
             email: emailRef.current.value,
             password: passwordRef.current.value,
             password_confirmation: passwordConfirmationRef.current.value
         }
+
+        console.log(payload);
 
         axiosClient.post("/signup", payload)
             .then((data) => {
@@ -32,7 +33,7 @@ const SignUp = () => {
             .catch(err => {
                 const response = err.response;
                 if (response && response.status === 422) {
-                    console.log(response.data.errors);
+                    setErrors(response.data.errors);
                 }
             })
     }
@@ -41,12 +42,18 @@ const SignUp = () => {
     return ( 
         <div className="login-signup-form animated fadeInDown">
             <div className="form">
-                <form onClick={onSubmit}>
+                <form onSubmit={onSubmit}>
                     <h1 className="title">
                         Create an account
                     </h1>
+                    {
+                        errors && <div className="alert">
+                            {Object.keys(errors).map(key => (
+                                <p key={key}>{errors[key][0]}</p>
+                            ))}
+                        </div>
+                    }
                     <input ref={nameRef} type="text" placeholder="Name" />
-                    <input ref={surnameRef} type="text" placeholder="Surname" />
                     <input ref={emailRef} type="email" placeholder="Email" />
                     <input ref={passwordRef} type="password" placeholder="Password" />
                     <input ref={passwordConfirmationRef} type="password" placeholder="Confirm your password" />
