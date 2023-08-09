@@ -30,7 +30,7 @@ class AuthController extends Controller
 
     public function login(LoginRequest $request)
     {
-        $credentials = $request->validate();
+        $credentials = $request->validated();
 
         if (!Auth::attempt($credentials)) {
             return response([
