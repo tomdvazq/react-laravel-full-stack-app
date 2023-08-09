@@ -1,13 +1,13 @@
 import { Link } from "react-router-dom";
-import { createRef, useState } from "react";
+import { useRef, useState } from "react";
 import axiosClient from "../axiosClient.js";
 import { useStateContext } from "../contexts/ContextProvider.jsx";
 
 export default function Signup() {
-    const nameRef = createRef();
-    const emailRef = createRef();
-    const passwordRef = createRef();
-    const passwordConfirmationRef = createRef();
+    const nameRef = useRef();
+    const emailRef = useRef();
+    const passwordRef = useRef();
+    const passwordConfirmationRef = useRef();
     const { setUser, setToken } = useStateContext();
     const [errors, setErrors] = useState(null);
 
